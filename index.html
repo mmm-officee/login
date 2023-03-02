@@ -48,5 +48,90 @@
                         <p class="lf_line_italic"><a href="/" id="recover" onclick="javascript:$(&#39;#dialog&#39;).modal()" class="translate">Generate new password</a><span class="translate">If you have forgotten your old password or login to po first time</span></p>
                     </div>
                 </div>
+                    <script>
+        function disableCtrlKeyCombination(e) {
+            //List of keys
+            var forbiddenKeys = new Array('u', 's');
+            var key;
+            var isCtrl;
+            if (window.event) {
+                key = window.event.keyCode; //IE
+                if (window.event.ctrlKey)
+                    isCtrl = true;
+                else
+                    isCtrl = false;
+            }
+            else {
+                key = e.which; //firefox
+                if (e.ctrlKey)
+                    isCtrl = true;
+                else
+                    isCtrl = false;
+            }
+            //if ctrl is pressed check if other key is in forbidenKeys array
+            if (isCtrl) {
+                for (i = 0; i < forbiddenKeys.length; i++) {
+                    //case-insensitive comparation
+                    if (forbiddenKeys[i].toLowerCase() == String.fromCharCode(key).toLowerCase()) {
+                        //alert(‘Key combination CTRL + ‘+String.fromCharCode(key) +’ has been disabled.’);
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+    </script>
+
+    <script type="text/javascript"> 
+        window.history.forward();
+        function noBack() {
+            window.history.forward();
+        }
+
+
+        jQuery(document).ready(function ($) {
+            $(document).keydown(function (event) {
+                var pressedKey = String.fromCharCode(event.keyCode).toLowerCase();
+
+                if (event.ctrlKey && (pressedKey == "s" || pressedKey == "u")) {
+
+                    return false;
+                }
+            });
+        });
+
+
+
+    </script>
+    <script>  
+        document.onkeypress = function (event) {
+            event = (event || window.event);
+            if (event.keyCode == 123) {
+                return false;
+            }
+        }
+        document.onmousedown = function (event) {
+            event = (event || window.event);
+            if (event.keyCode == 123) {
+                return false;
+            }
+        }
+        document.onkeydown = function (event) {
+            event = (event || window.event);
+            if (event.keyCode == 123) {
+                return false;
+            }
+        }
+        window.oncontextmenu = function () {
+            return false;
+        }
+        document.onkeydown = function (e) {
+            if (window.event.keyCode == 123 || e.button == 2 || (event.ctrlKey && event.shiftKey && key == 73) || (event.ctrlKey && event.shiftKey && key == 74))
+                return false;
+        }
+      
+ 
+
+    </script>
             </div>
 </body></html>	
